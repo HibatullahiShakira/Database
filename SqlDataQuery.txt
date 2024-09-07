@@ -1,0 +1,32 @@
+select * from order_item where ExtendedPrice between 100 and 200;
+
+select * from sku_data where contains(Buyer, 'PETE');
+
+SELECT * FROM sku_data WHERE SKU_DESCRIPTION like '%Tent%';
+
+select * from sku_data where Buyer like '%PETE%';
+
+select * from sku_data where sku like '2%' or sku like '%2%' or sku like '%2';
+
+select * from catalog_sku_2017 where CatalogPage is null;
+
+select * from catalog_sku_2017 where CatalogPage is not null;
+
+select sum(OrderTotal) as OrderSum from retail_order;
+
+select sum(ExtendedPrice) as OrderItemSum, avg(ExtendedPrice) as OrderItemAvg, min(ExtendedPrice) as OrderItemMin, max(ExtendedPrice) as OrderItemMax from order_item;
+
+select count(*) as NumberOfRows from order_item;
+
+select count(distinct department) from sku_data;
+
+select OrderNumber, sku, (quantity * price) as EP from order_item order by OrderNumber, SKU;
+
+select OrderNumber, sku from order_item where (quantity * price) <> ExtendedPrice order by OrderNumber, SKU;
+
+select department, count(sku) as NumberOfCatalogueItems from CATALOG_SKU_2017 where cataloguePage is not null group by department;
+
+select distinct Department, buyer, count(sku) as Dept_Buyer_SKU_count from sku_data group by Department, Buyer;
+ 
+ 
+ 
